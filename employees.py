@@ -1,31 +1,31 @@
-import pandas
 import datetime
+import calendar
 
-
-
-class employee:
-    employees = ["виктор, сергеич, петрович, вовчик"]
-    def __init__(self, name, position, salari):
-        self.name = str(name)
-        self.position = int(position)
-        self.salari = int(salari) 
+class Employee:
+    def __init__(self, name, position, salary):
+        self.name = name
+        self.position = position
+        self.salary = salary
 
     def info(self):
-        return employee    (self.name) + " " + (self.position) + " " + (self.salari)
-    
-    
-    
+        return f'имя:{self.name}; должность:{self.position}; зарплата:{self.salary}'
+
+    def calc_salary(self, worked_days):
+        return self.position * self.salary * worked_days
 
 
-    def calc_salari(self):
-        return employee  (self.position)*(self.salari)*worked_days
- 
-
-
-class manager(employee):
-    def __init__(self, department,num_employee):
+class Manager(Employee):
+    def __init__(self, department, num_employees, name, position, salary):
+        super().__init__(name, position, salary)
         self.department = department
-        self.num_employee = num_employee
+        self.num_employees = num_employees
+
+
+    def info(self):
+        return f'имя:{self.name}; должность:{self.position}; зарплата:{self.salary}; депортамент:{self.department}; количество сотрудников: {self.num_employees}'
+
+    def calc_salary(self, worked_days):
+        return self.position * self.salary * worked_days + self.position * self.salary * worked_days * (1 / self.num_employees)
 
 
 
